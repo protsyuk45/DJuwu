@@ -46,6 +46,14 @@ public:
         }
     }
 
+    void displayFlights() const {
+        std::cout << "Flights from " << name << ":\n";
+        for (const Flight& flight : flights) {
+            std::cout << "  To: " << airports[flight.destination_airport].name
+                      << " | Fuel: " << flight.fuel << std::endl;
+        }
+    }
+
     int findNearestAirport() {
         int nearestAirport = -1;
         int minDistance = INT_MAX;
@@ -93,6 +101,11 @@ int main() {
     // Перенаправляємо рейси в закритому аеропорту
     for (int i = 1; i < num_airports; i++) {
         airports[i].redirectFlights(airports[0]);
+    }
+
+    // Виводимо інформацію про рейси для всіх аеропортів
+    for (int i = 0; i < num_airports; i++) {
+        airports[i].displayFlights();
     }
 
     // Виводимо стан аеропортів
