@@ -19,9 +19,20 @@ public:
     int fuel;
 };
 
+
+// Закриваємо перший аеропорт
+    airports[0].close();
+
+    // Перенаправляємо рейси в закритому аеропорту
+    for (int i = 1; i < num_airports; i++) {
+        airports[i].redirectFlights(airports[0]);
+    }
 class Airport {
 public:
-    Airport(const std::string& name) : name(name), active(true) {}
+    Airport(const std::string& name) : name(name), active(true) 
+    {
+     }
+    }
 
     void close() {
         active = false;
